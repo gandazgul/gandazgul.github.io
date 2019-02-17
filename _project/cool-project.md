@@ -1,7 +1,7 @@
 ---
 layout: project_single
-title:  "First!"
-slug: "first"
+title:  "Cool project"
+slug: "cool-project"
 ---
 
-I'm first!
+Cool project here
