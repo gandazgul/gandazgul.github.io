@@ -14,22 +14,21 @@ windows for example, this is how you do it with IPTables:
     * Run `virsh net-edit default` but dont actually change anything, just take note of the bridge name:
     `<bridge name='virbr0' ...`
 3. Run these 2 commands as root (sudo): 
-    ```bash
-    # accepts traffic on the VM's ip address. Check that virbr0 is the bridge installed by libvirt it could be different for you.
-    sudo iptables -I FORWARD -o virbr0 -d [VM IP HERE] -j ACCEPT
-    sudo iptables -t nat -I PREROUTING -p tcp --dport [OUTSIDE PORT] -j DNAT --to [VM IP]:[SERVICE PORT]
-    ```
+    1. Accepts traffic destined to the VM's ip address:<br>
+        `sudo iptables -I FORWARD -o virbr0 -d [VM IP HERE] -j ACCEPT`
+    2. Forward the port: <br> 
+        `sudo iptables -t nat -I PREROUTING -p tcp --dport [OUTSIDE PORT] -j DNAT --to [VM IP]:[SERVICE PORT]`
 4. Now you can connect to ip.of.host:[OUTSIDE PORT] and it will be forwarded to the VM on SERVICE PORT.
 5. To persist the changes:
     1. Install iptables-services `sudo dnf install iptables-services` 
     2. to make sure they are loaded after restart `sudo systemsctl enable iptables`
     3. To save them run `sudo service iptables save`
 
-After the first time when you want to forward a new port:
+## After the first time when you want to forward a new port:
 
 1. Run these 2 commands as root (sudo): 
    ```bash
-   sudo iptables -I FORWARD -o virbr0 -d [VM IP HERE] -j ACCEPT
+   sudo iptables -I FORWARD -o virbr0 -d [VM IP] -j ACCEPT
    sudo iptables -t nat -I PREROUTING -p tcp --dport [OUTSIDE PORT] -j DNAT --to [VM IP]:[SERVICE PORT]
    ```
 2. Test that the port is forwarded
