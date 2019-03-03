@@ -21,10 +21,9 @@ windows for example, this is how you do it with IPTables:
     ```
 4. Now you can connect to ip.of.host:[OUTSIDE PORT] and it will be forwarded to the VM on SERVICE PORT.
 5. To persist the changes:
-    0. Install iptables-services `sudo dnf install iptables-services` 
-    0. to make sure they are loaded after restart `sudo systemsctl enable iptables`
-    0. To save them run `sudo service iptables save`
-
+    1. Install iptables-services `sudo dnf install iptables-services` 
+    2. to make sure they are loaded after restart `sudo systemsctl enable iptables`
+    3. To save them run `sudo service iptables save`
 
 After the first time when you want to forward a new port:
 
