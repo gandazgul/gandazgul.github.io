@@ -2,7 +2,7 @@
 layout: post
 title:  "How to simply forward a port with iptables on Fedora 28"
 date:   2019-03-02 3:54:00 -0400
-categories: [iptables, fedora]
+categories: [kvm, fedora]
 ---
 
 I have KVM (libvirtd) installed on a Fedora 28 server and wanted to access some services inside the VMs like RDP for 
