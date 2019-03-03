@@ -5,7 +5,7 @@ date:   2019-03-02 3:54:00 -0400
 categories: [iptables, fedora]
 ---
 
-I have KVM (libvirtd) installed on a Fedora 28 server and wanted to access some services inside the VMs like RDSP for 
+I have KVM (libvirtd) installed on a Fedora 28 server and wanted to access some services inside the VMs like RDP for 
 windows for example, this is how you do it with IPTables: 
 
 1. Give your VM a static IP
@@ -24,6 +24,17 @@ windows for example, this is how you do it with IPTables:
     0. Install iptables-services `sudo dnf install iptables-services` 
     0. to make sure they are loaded after restart `sudo systemsctl enable iptables`
     0. To save them run `sudo service iptables save`
+
+After the first time when you want to forward a new port:
+
+1. Run these 2 commands as root (sudo): 
+   ```bash
+   # accepts traffic on the VM's ip address. Check that virbr0 is the bridge installed by libvirt it could be different for you.
+   sudo iptables -I FORWARD -o virbr0 -d [VM IP HERE] -j ACCEPT
+   sudo iptables -t nat -I PREROUTING -p tcp --dport [OUTSIDE PORT] -j DNAT --to [VM IP]:[SERVICE PORT]
+   ```
+2. Test that the port is forwarded
+3. Then save them `sudo service iptables save`
 
 Hope this was helpful, open an issue here if you need help: https://github.com/gandazgul/k8s-infrastructure
 
