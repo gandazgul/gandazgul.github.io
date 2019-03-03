@@ -25,11 +25,11 @@ windows for example, this is how you do it with IPTables:
     0. to make sure they are loaded after restart `sudo systemsctl enable iptables`
     0. To save them run `sudo service iptables save`
 
+
 After the first time when you want to forward a new port:
 
 1. Run these 2 commands as root (sudo): 
    ```bash
-   # accepts traffic on the VM's ip address. Check that virbr0 is the bridge installed by libvirt it could be different for you.
    sudo iptables -I FORWARD -o virbr0 -d [VM IP HERE] -j ACCEPT
    sudo iptables -t nat -I PREROUTING -p tcp --dport [OUTSIDE PORT] -j DNAT --to [VM IP]:[SERVICE PORT]
    ```
