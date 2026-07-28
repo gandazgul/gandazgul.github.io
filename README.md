@@ -3,7 +3,7 @@
 Static, resume portfolio for Carlos Ravelo, built with TypeScript, Next.js App
 Router, React, WebTUI CSS, and Yarn/Node.js tooling.
 
-- Vercel URL: `https://<your-vercel-project>.vercel.app`
+- Vercel URL: `https://gandazgul-github-io.vercel.app/`
 - GitHub Pages URL: `https://gandazgul.github.io`
 - Resume PDF: `/CarlosRavelo.pdf`
 
