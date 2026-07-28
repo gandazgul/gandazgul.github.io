@@ -64,7 +64,7 @@ export const runWieldAttribution = {
   href: "https://github.com/gandazgul/runwield",
   command: "$ build -t RunWield --deploy Vercel",
   copy:
-    "RunWield is Carlos's plan-by-default coding harness for software delivery with AI. Powered by Next.js and deployed to Vercel's cloud.",
+    "RunWield is Carlos's plan-by-default coding harness for software delivery with AI. Powered by Next.js and deployed on Vercel.",
 };
 
 export const impacts: Impact[] = [

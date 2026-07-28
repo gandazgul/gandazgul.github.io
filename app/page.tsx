@@ -83,7 +83,7 @@ export default function Home() {
         <p>
           Copyright © 2026 Carlos Ravelo. ❯ Built with{" "}
           <ExternalLink href="https://github.com/gandazgul/runwield">RunWield</ExternalLink>. Powered by Next.js and
-          deployed with Vercel.
+          deployed on Vercel.
         </p>
       </footer>
     </main>
